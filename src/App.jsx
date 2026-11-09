@@ -1,4 +1,4 @@
-
+const API_BASE_URL = import.meta.env.VITE_API_URL || '';
 import './App.css'
 
 import { useState } from 'react'
@@ -131,7 +131,7 @@ function App() {
   // Gemini API call for chatbot
   const sendMessageToGemini = async (prompt, history) => {
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch(`${API_BASE_URL}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -164,7 +164,7 @@ function App() {
     setFaqError('')
 
     try {
-      const response = await fetch('/api/generate-faq', { method: 'POST' })
+      const response = await fetch(`${API_BASE_URL}/api/generate-faq`, { method: 'POST' })
 
       const data = await response.json()
 
